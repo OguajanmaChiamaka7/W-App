@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #fff;
+  padding: 20px; /* Added padding for mobile */
 }
 
 .container {
@@ -67,12 +68,18 @@ button:hover {
   transform: scale(1.03);
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .card {
   margin-top: 15px;
   padding: 20px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card h2 {
@@ -91,13 +98,203 @@ button:hover {
   font-size: 16px;
 }
 
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+
 .error {
   color: #ffdddd;
   background: rgba(255, 0, 0, 0.3);
   padding: 8px;
   border-radius: 8px;
+  margin-top: 10px;
 }
+
 .error p {
   margin: 0;
   font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 380px;
+    padding: 25px 18px;
+  }
+
+  .container h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
+
+  .card h3 {
+    font-size: 28px;
+  }
+
+  .card p {
+    font-size: 15px;
+  }
+}
+
+/* Small tablets and large phones (max-width: 600px) */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .container h1 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+
+  .form {
+    gap: 8px;
+  }
+
+  input {
+    padding: 11px;
+    font-size: 15px;
+  }
+
+  button {
+    padding: 11px 16px;
+    font-size: 15px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card h2 {
+    font-size: 19px;
+  }
+
+  .card h3 {
+    font-size: 26px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile phones (max-width: 480px) */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 18px 12px;
+    border-radius: 14px;
+  }
+
+  .container h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .card {
+    padding: 15px;
+    margin-top: 12px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+  }
+
+  .card h3 {
+    font-size: 24px;
+    margin: 8px 0;
+  }
+
+  .card p {
+    font-size: 13px;
+    margin: 4px 0;
+  }
+
+  .error {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Very small phones (max-width: 360px) */
+@media (max-width: 360px) {
+  .container {
+    padding: 15px 10px;
+  }
+
+  .container h1 {
+    font-size: 18px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
+
+  .card h3 {
+    font-size: 22px;
+  }
+
+  .card p {
+    font-size: 12px;
+  }
+}
+
+/* Landscape mode for mobile devices */
+@media (max-height: 600px) and (orientation: landscape) {
+  body {
+    padding: 10px;
+    align-items: flex-start;
+  }
+
+  .container {
+    margin: 10px 0;
+  }
+
+  .container h1 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .card {
+    padding: 12px;
+  }
 }
