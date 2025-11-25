@@ -16,7 +16,9 @@ function App() {
     setData(null);
 
     try {
-      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+      const apiKey =
+        import.meta.env.VITE_WEATHER_API_KEY ||
+        import.meta.env.VITE_WEATHER_KEY;
 
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
@@ -35,7 +37,9 @@ function App() {
         temp: json.main.temp,
         feels: json.main.feels_like,
         desc: json.weather[0].description,
+        main: json.weather[0].main,
         icon: json.weather[0].icon,
+        wind: json.wind.speed,
       });
     } catch (err) {
       setError(err.message);
@@ -44,36 +48,49 @@ function App() {
     setLoading(false);
   };
 
+  // Determine background class based on weather
+  let bgClass = "bg-default";
+  if (data) {
+    const main = data.main.toLowerCase();
+    if (main.includes("cloud")) bgClass = "bg-cloudy";
+    else if (main.includes("rain")) bgClass = "bg-rain";
+    else if (main.includes("clear")) bgClass = "bg-sunny";
+    else if (main.includes("snow")) bgClass = "bg-snow";
+  }
+
   return (
-    <div className="container">
-      <h1>Weather App</h1>
+    <div className={`app-container ${bgClass}`}>
+      <div className="container">
+        <h1>Weather App</h1>
 
-      <form onSubmit={getWeather} className="form">
-        <input
-          type="text"
-          placeholder="Enter city e.g Lagos"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
-        <button disabled={loading}>{loading ? "..." : "Search"}</button>
-      </form>
-
-      {error && <p className="error">{error}</p>}
-
-      {data && (
-        <div className="card">
-          <h2>
-            {data.name}, {data.country}
-          </h2>
-          <img
-            src={`https://openweathermap.org/img/wn/${data.icon}@2x.png`}
-            alt="weather-icon"
+        <form onSubmit={getWeather} className="form">
+          <input
+            type="text"
+            placeholder="Enter city e.g Lagos"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
           />
-          <p>{data.desc}</p>
-          <h3>{data.temp}°C</h3>
-          <p>Feels like {data.feels}°C</p>
-        </div>
-      )}
+          <button disabled={loading}>{loading ? "..." : "Search"}</button>
+        </form>
+
+        {error && <p className="error">{error}</p>}
+
+        {data && (
+          <div className="card">
+            <h2>
+              {data.name}, {data.country}
+            </h2>
+            <img
+              src={`https://openweathermap.org/img/wn/${data.icon}@2x.png`}
+              alt="weather-icon"
+            />
+            <p className="description">{data.desc}</p>
+            <h3>{data.temp}°C</h3>
+            <p>Feels like {data.feels}°C</p>
+            <p>💨 Wind: {data.wind} m/s</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

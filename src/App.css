@@ -2,14 +2,85 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", Arial, sans-serif;
-  background: linear-gradient(135deg, #6fb1fc, #4364f7, #4c54f7);
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* App container with dynamic backgrounds */
+.app-container {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  transition: background 0.8s ease;
 }
 
+/* Default background */
+.bg-default {
+  background: linear-gradient(135deg, #6fb1fc, #4364f7, #4c54f7);
+}
+
+/* Sunny animation */
+.bg-sunny {
+  background: linear-gradient(to bottom, #fceabb, #f8b500);
+  animation: sunnyAnim 5s infinite alternate;
+}
+
+@keyframes sunnyAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Cloudy animation */
+.bg-cloudy {
+  background: linear-gradient(to bottom, #d7dde8, #a9b6c2);
+  animation: cloudyAnim 8s infinite alternate;
+}
+
+@keyframes cloudyAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Rain animation */
+.bg-rain {
+  background: linear-gradient(to bottom, #4e6ca1, #2c3e50);
+  animation: rainAnim 6s infinite alternate;
+}
+
+@keyframes rainAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Snow animation */
+.bg-snow {
+  background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
+  animation: snowAnim 10s infinite alternate;
+}
+
+@keyframes snowAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Container card */
 .container {
   width: 100%;
   max-width: 420px;
@@ -19,7 +90,7 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   backdrop-filter: blur(12px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .container h1 {
@@ -28,6 +99,7 @@ body {
   font-weight: 600;
 }
 
+/* Form styling */
 .form {
   display: flex;
   gap: 10px;
@@ -66,12 +138,19 @@ button:hover {
   transform: scale(1.03);
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Weather card */
 .card {
   margin-top: 15px;
   padding: 20px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card h2 {
@@ -90,13 +169,23 @@ button:hover {
   font-size: 16px;
 }
 
+.card img {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+}
+
+.description {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+/* Error styling */
 .error {
   color: #ffdddd;
   background: rgba(255, 0, 0, 0.3);
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
-}
-.error p {
-  margin: 0;
+  margin-top: 10px;
   font-weight: 600;
 }
