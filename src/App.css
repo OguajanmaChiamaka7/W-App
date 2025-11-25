@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(135deg, #6fb1fc, #4364f7, #4c54f7);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.container h1 {
+  font-size: 26px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  background-color: ghostwhite;
+  color: black;
+}
+
+::placeholder {
+  color: #999;
+}
+
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #6a5af9, #c37bff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+.card {
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+  margin-bottom: 5px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.card h3 {
+  font-size: 30px;
+  margin: 10px 0;
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.error {
+  color: #ffdddd;
+  background: rgba(255, 0, 0, 0.3);
+  padding: 8px;
+  border-radius: 8px;
+}
+.error p {
+  margin: 0;
+  font-weight: 600;
+}
